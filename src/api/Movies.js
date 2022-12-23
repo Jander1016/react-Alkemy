@@ -19,3 +19,12 @@ export const getMovieById = async(id) =>{
     console.log(error.message )
   }
 }
+
+export const getMovieVideoById = async(id) =>{
+  try {
+    const res= await axios.get(`${VITE_API_URL}/movie/${id}/videos?api_key=${VITE_API_KEY}&language=es-ES`)
+    return res.data
+  } catch (error) {
+    console.log(error.message )
+  }
+}

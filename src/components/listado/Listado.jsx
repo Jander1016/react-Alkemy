@@ -36,29 +36,23 @@ const Listado = () => {
             <Card style={
               {
                 width: '18rem',
-                height: '750px'
+                height: '450px'
               }
             }>
-              <Card.Img variant="top"
-                src={
-                  VITE_IMAGES_URL + item.poster_path
-                }
-                alt='Imagen'/>
-              <Card.Body>
-                <Card.Title>{
-                  item.title
-                }</Card.Title>
-                <Card.Text> {
-                  item.overview.slice(0, 200)
-                }...
-                </Card.Text>
-                <Link to={
+              <Link to={
                     `/details/${
                       item.id
                     }`
                   }
-                  className="btn btn-primary">View Detail</Link>
-              </Card.Body>
+                  className="btn btn-primary">
+                    <Card.Img variant="top"
+              
+              src={
+                VITE_IMAGES_URL + item.poster_path
+              }
+              alt='Imagen'/>
+                  </Link>
+              
             </Card>
           </article>
           ))
