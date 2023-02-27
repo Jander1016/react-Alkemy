@@ -5,7 +5,8 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Listado from "./components/listado/Listado";
 import AboutMe from "./components/about/AboutMe";
-import DetailMovie from "./components/Detail/DetailMovie";
+import DetailMovie from "./components/detail/DetailMovie";
+import SearchMovie from "./components/search/SearchMovie";
 
 function App() {
 
@@ -19,6 +20,8 @@ function App() {
           element={<AboutMe />}/>
         <Route path='/details/:id'
           element={<DetailMovie />}/>
+        <Route path='/searchMovie'
+          element={<SearchMovie />}/>
         <Route path='/'
           element={<Login />}/>
       </Routes>

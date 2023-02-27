@@ -1,7 +1,6 @@
-import ReactPlayer from "react-player";
 import { Navigate, useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import { getMovieById, getMovieVideoById } from '../../api/Movies'
+import { getMovieById} from '../../api/Movies'
 
 
 const { VITE_IMAGES_URL} = import.meta.env
@@ -15,15 +14,8 @@ const DetailMovie = ( ) => {
     queryFn: async()=> await getMovieById(id)
   })
 
-  const {isError: errorVideo, data: movieVideo} = useQuery({
-    queryKey: ['movieVideo', id], 
-    queryFn: async()=> await getMovieVideoById(id)
-  })
-
   if (isLoading) return <div>Loading...</div>
   else if (isError) return <div>Error: {error.message}</div>
-  
-  // if(!errorVideo)console.log(movieVideo.results[0]?.key)
 
   return (
     <>
@@ -33,16 +25,7 @@ const DetailMovie = ( ) => {
     <div className="card mb-3"  >
       <div className="row g-0">
         <div className="col-md-4">
-          <img src={VITE_IMAGES_URL + movie.backdrop_path} className="img-fluid rounded-start" alt={movie.overview} />
-           {/* <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${movieVideo?.results[0]?.key}`}
-            width="100%"
-            height="100%"
-            style={{ position: "absolute", top: "0", left: "0" }}
-            controls={true}
-            playing={showPlayer}
-          /> */}
-          
+          <img src={VITE_IMAGES_URL + movie.backdrop_path} className="img-fluid rounded-start" alt={movie.overview} />          
         </div>
         <div className="col-md-8">
           <div className="card-body">

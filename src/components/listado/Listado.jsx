@@ -12,7 +12,7 @@ const Listado = () => {
 
   const {VITE_API_KEY, VITE_API_URL, VITE_IMAGES_URL} = import.meta.env
 
-  const URL = `${VITE_API_URL}/discover/movie?api_key=${VITE_API_KEY}&language=es-ES&page=1`
+  const URL = `${VITE_API_URL}/discover/movie?api_key=${VITE_API_KEY}&language=es-ES`
   const token = sessionStorage.getItem('token')
 
   useEffect(() => {
@@ -23,39 +23,25 @@ const Listado = () => {
 
   return (
     <> {
-      !token && <Navigate to={"/"}/>
+      ! token && <Navigate to={"/"}/>
     }
       <div className='row'>
         {
         (movieList || !movieList.length) 
         ? movieList.map(item => (
-          <article className='col col-sl-3 col-ml-2'
-            key={
-              item.id
-          }>
+          <article className='col col-sl-3 col-ml-2' key={ item.id }>
             <Card style={
               {
                 width: '18rem',
-                height: '450px'
+                height: '410px'
               }
             }>
-              <Link to={
-                    `/details/${
-                      item.id
-                    }`
-                  }
-                  className="btn btn-primary">
-                    <Card.Img variant="top"
-              
-              src={
-                VITE_IMAGES_URL + item.poster_path
-              }
-              alt='Imagen'/>
-                  </Link>
-              
+              <Link to={`/details/${item.id}`} >
+                <Card.Img variant="top"  src={ VITE_IMAGES_URL + item.poster_path } alt='Imagen'/>
+              </Link>
             </Card>
           </article>
-          ))
+        )) 
         : swal({title: 'No hay información', text: 'Vuelva a intentar', icon: 'warning', dangerMode: true})
       } </div>
     </>
